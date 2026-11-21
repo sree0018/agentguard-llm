@@ -15,5 +15,5 @@
 </div>
 </div>
 <p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
-<aside>This is the weakness the original report admitted. The regex only matches literal patterns, so anyone who spaces out the letters, base64-encodes the secret or writes it as character codes walks straight past it. In our adaptive test set, called ADV-2, all five original obfuscation attacks got through. The regex also ignores the task entirely: it never asks whether the content makes sense for what the user wanted. That is the gap a language model can fill, because it can judge consistency, not just match strings.</aside>
+<aside>[Aditya · 1:30-2:30] In the original project, check four was a regex: six patterns such as API key, password and bearer token, plus a list of bad host names. It never looks at the task. So if an attacker spaces out the letters, base64-encodes the secret, or writes it as character codes, it walks straight past. In the original report, all five obfuscation attacks got through. That is the gap our project closes. Sreeranj will show you what we did about it.</aside>
 </section>

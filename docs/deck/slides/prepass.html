@@ -15,5 +15,5 @@
 </div>
 </div>
 <p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
-<aside>A small model cannot reliably decode base64 or see a zero-width character, so we added a deterministic helper, normalize.py. It decodes the encodings that can be decoded mechanically and reports invisible or look-alike Unicode characters. It is evidence only: it contains no list of secret-looking patterns and it never returns allow or block. That is what separates it from the old regex. A decoded string is still treated as untrusted data. Later in the deck we show where this helped and where it did not.</aside>
+<aside>[Sreeranj · 3:35-4:05] One more piece. Small models can't reliably decode base64 or notice an invisible character, so we added a deterministic helper. It only gives evidence: it decodes what can be decoded mechanically and flags look-alike or zero-width characters. It has no secret patterns and it never decides. The model still makes the call. NEXT: switch to the terminal for the demo (next slide is the stand-by slide).</aside>
 </section>

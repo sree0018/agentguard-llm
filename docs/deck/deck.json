@@ -1,22 +1,78 @@
 {
   "v": 5,
-  "createdOnFiles": {"v": 1, "at": "2026-11-18T12:00:00Z"},
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-18T12:00:00Z"
+  },
   "lists": "css",
-  "format": {"v": 1, "shared": ["project/deck.css"]},
+  "format": {
+    "v": 1,
+    "shared": [
+      "project/deck.css"
+    ]
+  },
   "title": "AgentGuard-LLM: a local-LLM payload guard, red-teamed",
-  "order": ["cover", "anatomy", "weakspot", "proposal", "prepass", "method", "attacks", "headline", "consistent", "fpcost", "tradeoff", "prepass-result", "fails", "adaptive", "benchmark", "cost", "limits", "takeaways", "next", "reproduce", "questions", "appx-all", "appx-tuning"],
+  "order": [
+    "cover",
+    "anatomy",
+    "weakspot",
+    "proposal",
+    "prepass",
+    "demo",
+    "method",
+    "headline",
+    "fpcost",
+    "tradeoff",
+    "fails",
+    "adaptive",
+    "limits",
+    "takeaways",
+    "questions",
+    "attacks",
+    "consistent",
+    "prepass-result",
+    "benchmark",
+    "cost",
+    "next",
+    "reproduce",
+    "appx-all",
+    "appx-tuning"
+  ],
   "sections": {
-    "context": {"description": "What AgentGuard is and why check 4 is its weak point.", "start": "cover"},
-    "approach": {"description": "A local LLM guard with a deterministic evidence pre-pass.", "start": "proposal"},
-    "evaluation": {"description": "Four test sets with strict held-out rules.", "start": "method"},
-    "results": {"description": "What worked, what it costs, and where it still fails.", "start": "headline"},
-    "wrapup": {"description": "Takeaways, next steps and how to reproduce everything.", "start": "takeaways"},
-    "appendix": {"description": "Full result tables and the tuning history.", "start": "appx-all"}
+    "problem": {
+      "description": "Aditya: what AgentGuard is and why check 4 is its weak point.",
+      "start": "cover"
+    },
+    "solution": {
+      "description": "Sreeranj: a local LLM guard with an evidence pre-pass, and the live demo.",
+      "start": "proposal"
+    },
+    "evidence": {
+      "description": "Gopika: how we tested, the headline result, the cost and the trade-off.",
+      "start": "method"
+    },
+    "stresstest": {
+      "description": "Meera: where it fails, the adaptive attacker, limits and takeaways.",
+      "start": "fails"
+    },
+    "backup": {
+      "description": "Backup slides for questions, not part of the 10 minutes.",
+      "start": "attacks"
+    }
   },
   "faces": {
-    "space-grotesk": {"family": "Space Grotesk", "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"},
-    "inter": {"family": "Inter", "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"},
-    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+    "space-grotesk": {
+      "family": "Space Grotesk",
+      "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"
+    },
+    "inter": {
+      "family": "Inter",
+      "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    },
+    "jetbrains-mono": {
+      "family": "JetBrains Mono",
+      "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    }
   },
   "designSystems": []
 }

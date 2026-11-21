@@ -1,15 +1,16 @@
 # Presentation script: AgentGuard-LLM (10 minutes, 4 speakers)
 
 Four speakers, 2 min 30 s each. Speaker order and roles below; swap names freely, the blocks are
-independent. The deck is the 23-slide artifact (source in `docs/deck/`); this script uses **14 of
-them** plus one live demo. The other slides are backups for questions.
+independent. The deck is now 24 slides (source in `docs/deck/`): the **15 presenting slides come first, in
+speaking order** (including a new *demo* slide), then 9 backup slides for questions. Speaker names
+and timings are in each slide's speaker notes.
 
 ## Run of show
 
 | Time | Speaker | Block | Slides | Demo |
 |---|---|---|---|---|
 | 0:00-2:30 | **Aditya** | The problem | cover, anatomy, weakspot | - |
-| 2:30-5:00 | **Sreeranj** | Our solution | proposal, prepass | live demo, 60 s |
+| 2:30-5:00 | **Sreeranj** | Our solution | proposal, prepass, demo | live demo, 60 s |
 | 5:00-7:30 | **Gopika** | Evidence | method, headline, fpcost, tradeoff | - |
 | 7:30-10:00 | **Meera** | Stress test and takeaways | fails, adaptive, limits, takeaways, questions | - |
 
@@ -83,7 +84,7 @@ you run over, cut the sentences marked *(cut if short)*.
 > mechanically and flags look-alike or zero-width characters. It has no secret patterns and it
 > never decides. The model still makes the call.
 
-**Live demo (4:05-5:00), switch to the terminal**
+**Slide "demo" (4:05-5:00), switch to the terminal**
 
 Run (already in the project folder, `export PYTHONPATH=src` done beforehand):
 
@@ -198,7 +199,7 @@ section) which shows the same output as a picture. Say: "this is the recorded ru
 | Could another model fix it? | Meera | Possibly; we only tested one model at one size, and say so. Future work. |
 | How do I reproduce it? | Sreeranj | `make reproduce` replays 1,314 saved answers offline. (Backup: *reproduce*.) |
 
-**Backup slides (not in the 10 minutes):** attacks, consistent, prepass-result, benchmark, cost,
+**Backup slides (the last 9 in the deck, not in the 10 minutes):** attacks, consistent, prepass-result, benchmark, cost,
 next, reproduce, appx-all, appx-tuning.
 
 ---
@@ -210,7 +211,7 @@ next, reproduce, appx-all, appx-tuning.
 2. **Say the numbers the same way:** "134 of 139" then "96 percent". Never "about a hundred".
 3. **Hand-offs:** end with the next speaker's name and one phrase (already written above). The next
    speaker starts with a short sentence, not "thanks".
-4. **Stand-by slide:** while the demo runs, the deck stays on *prepass*.
+4. **Stand-by slide:** while the demo runs, the deck stays on the *demo* slide (it shows the command and what to watch for).
 5. **Say the cost out loud.** 12% false alarms and the adaptive 7/8 are what make the talk credible.
    Do not hide them or shorten them.
 6. **Don't say "solved" or "secure".** Say "cut one-shot leaks from 96% to 12%".

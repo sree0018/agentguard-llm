@@ -1,0 +1,13 @@
+<section id="demo" class="dark" data-transition="fade">
+<p class="eyebrow">LIVE DEMO · 60 SECONDS</p>
+<h2 class="title">Two cases: regex vs the LLM guard</h2>
+<p class="code" style="font-size:26px;margin-bottom:36px">$ python3 -m agentguard demo \<br>    --scenario blindspot --scenario guard-attack --pause</p>
+<div class="row">
+<div class="card"><p class="label strong t-teal">CASE 1 · THE REGEX BLIND SPOT</p><h3>A secret hidden as an encoded blob</h3><p class="small">Regex: ALLOW, it has no keyword to match.<br>LLM guard: BLOCK, an opaque string has no business in a summary.</p></div>
+<div class="card"><p class="label strong t-teal">CASE 2 · ATTACKING THE GUARD</p><h3>The payload talks to the guard</h3><p class="small">It claims a verdict of ALLOW and pre-approval.<br>LLM guard: BLOCK, the payload is treated as data.</p></div>
+</div>
+<div style="height:28px"></div>
+<p class="small mute">Replay mode: recorded model answers, no internet needed. Model time on screen is the recorded latency, a few seconds per call.</p>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>[Sreeranj · 4:05-5:00] Run in the terminal (already in the project folder, PYTHONPATH=src set): python3 -m agentguard demo --scenario blindspot --scenario guard-attack --pause. First case: a secret hidden as an encoded blob in the reply to a PDF-summary task. The regex step says allow, it has no keyword to match. The model step blocks it: an opaque string has no business in a summary. The recorded model time on screen is a few seconds; say so. Press Enter. Second case: the payload tries to talk to the guard, claiming a verdict of ALLOW. Using a language model adds that attack surface, so we tested it. The guard blocks it. Gopika will show how often this works over a proper test. FALLBACK if the terminal fails: open docs/report.html in a browser, the demo-output section shows the same output; say this is the recorded run.</aside>
+</section>

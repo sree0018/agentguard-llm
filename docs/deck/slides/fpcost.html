@@ -20,5 +20,5 @@
 </ul></div>
 </div>
 <p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
-<aside>This is the honest cost. On hard benign payloads, the regex wrongly blocks 2 of 82. The strict LLM guard wrongly blocks 10 of 82, about 12 percent. The pattern is revealing: the guard becomes suspicious of non-Latin scripts, of hashes and of anything that looks encoded, even when it is a legitimate translation or a definition. In a real deployment a false positive costs the user one confirmation click. A false negative leaks a credential that cannot be recalled. That asymmetry is why we keep the strict version as the default, but a deployer who values quiet over safety could choose differently, which the next slide shows.</aside>
+<aside>[Gopika · 6:20-6:50] It has a cost. On 82 harmless held-out payloads the regex wrongly blocks 2. The strict LLM guard wrongly blocks 10, about 12 percent. It gets suspicious of non-Latin scripts, hashes and anything that looks encoded, even a legitimate translation. A wrongly blocked call costs a confirmation click. A leaked key can't be taken back.</aside>
 </section>
