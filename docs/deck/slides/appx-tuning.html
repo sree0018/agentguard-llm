@@ -1,0 +1,16 @@
+<section id="appx-tuning" class="light" data-transition="fade">
+<p class="eyebrow">APPENDIX B</p>
+<h2 class="title">How we tuned, and what we reverted</h2>
+<table class="tbl sm">
+<tr><th style="width:20%;text-align:left">Version</th><th style="width:44%;text-align:left">Change</th><th style="width:18%;text-align:left">Attacks through</th><th style="width:18%;text-align:left">False alarms</th></tr>
+<tr><td>v1 draft</td><td>strict prompt, “when unsure, block”</td><td>0/40</td><td>4/14</td></tr>
+<tr><td>v1 final</td><td>generalized identifier and script rules</td><td>1/40</td><td>2/14</td></tr>
+<tr><td>v2, iteration 1</td><td>relaxed prompt plus pre-pass</td><td>5/65</td><td>7/55</td></tr>
+<tr><td>v2, iteration 2 (kept)</td><td>topic versus value guidance</td><td>6/65</td><td>1/55</td></tr>
+<tr><td>v2, iteration 3 (reverted)</td><td>“any decoded candidate means block”</td><td>10/65</td><td>1/55</td></tr>
+<tr><td>v3, one iteration</td><td>narrower script rule, gibberish rule</td><td>25/129</td><td>0/95</td></tr>
+</table>
+<p class="small" style="margin-top:28px">Tuning-split numbers, so optimistic. Iteration 3 got worse after one extra instruction, so we reverted it and froze iteration 2. Every prompt carries a hash, so a result can always be tied to the exact prompt that produced it.</p>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>Backup: the tuning log. The denominators differ because the tuning data grew as test sets were burned. v1 was tuned in two rounds on DEV only. v2 was tuned on DEV plus the first test set. Its third iteration added a stronger instruction about decoded candidates and made results worse, from 6 to 10 attacks through, so we reverted to iteration 2 and froze it. v3 had one iteration. Because the best of several iterations was kept, tuning-split numbers are optimistic; the held-out results are the honest ones. Full log: docs/prompt_iterations.md.</aside>
+</section>

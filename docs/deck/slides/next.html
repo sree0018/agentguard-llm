@@ -1,0 +1,22 @@
+<section id="next" class="light" data-transition="fade">
+<p class="eyebrow">WHAT COMES NEXT</p>
+<h2 class="title">Next steps</h2>
+<div class="row" style="gap:40px">
+<div class="card"><h3 class="t-teal">Defense in depth</h3>
+<ul class="body" style="margin:0;padding:0 0 0 8px">
+<li>Allowlists and secret-shaped value detection</li>
+<li>Alert and rate-limit on repeated blocks, so attackers get no feedback</li>
+<li>Richer task specs derived from the user’s prompt</li>
+<li>A larger or fine-tuned guard model</li>
+</ul></div>
+<div class="card"><h3 class="t-teal">Stronger evaluation</h3>
+<ul class="body" style="margin:0;padding:0 0 0 8px">
+<li>Blind test cases written by teammates</li>
+<li>A live agent loop, for example AgentDojo</li>
+<li>An LLM-driven attacker with a validity check</li>
+<li>More targets and more seeds for the adaptive test</li>
+</ul></div>
+</div>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>Two tracks. On the defense side: the LLM guard should sit inside a layered design. Allowlists and secret-shaped value detection catch what a language model misses, such as secrets labelled as identifiers. Alerting and rate-limiting on repeated blocks takes away the attacker's feedback loop, which is what the adaptive attacker exploits. A richer task spec derived from the user's own prompt would give the guard more context, and a bigger or fine-tuned model might follow instructions more reliably. On the evaluation side: blind cases from teammates, a live agent loop such as AgentDojo, and an LLM-driven attacker, which needs a validity check so that a bypass really leaks the secret.</aside>
+</section>

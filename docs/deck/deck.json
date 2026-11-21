@@ -1,0 +1,22 @@
+{
+  "v": 5,
+  "createdOnFiles": {"v": 1, "at": "2026-11-18T12:00:00Z"},
+  "lists": "css",
+  "format": {"v": 1, "shared": ["project/deck.css"]},
+  "title": "AgentGuard-LLM: a local-LLM payload guard, red-teamed",
+  "order": ["cover", "anatomy", "weakspot", "proposal", "prepass", "method", "attacks", "headline", "consistent", "fpcost", "tradeoff", "prepass-result", "fails", "adaptive", "benchmark", "cost", "limits", "takeaways", "next", "reproduce", "questions", "appx-all", "appx-tuning"],
+  "sections": {
+    "context": {"description": "What AgentGuard is and why check 4 is its weak point.", "start": "cover"},
+    "approach": {"description": "A local LLM guard with a deterministic evidence pre-pass.", "start": "proposal"},
+    "evaluation": {"description": "Four test sets with strict held-out rules.", "start": "method"},
+    "results": {"description": "What worked, what it costs, and where it still fails.", "start": "headline"},
+    "wrapup": {"description": "Takeaways, next steps and how to reproduce everything.", "start": "takeaways"},
+    "appendix": {"description": "Full result tables and the tuning history.", "start": "appx-all"}
+  },
+  "faces": {
+    "space-grotesk": {"family": "Space Grotesk", "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"},
+    "inter": {"family": "Inter", "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}

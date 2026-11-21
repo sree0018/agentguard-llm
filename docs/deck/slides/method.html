@@ -1,0 +1,20 @@
+<section id="method" class="light" data-transition="fade">
+<p class="eyebrow">THE EVALUATION</p>
+<h2 class="title">How we tested: four sets, strict rules</h2>
+<table class="tbl sm" style="font-size:26px">
+<tr><th style="width:24%;text-align:left">Set</th><th style="width:20%;text-align:left">Attacks / benign</th><th style="width:26%;text-align:left">Written</th><th style="width:30%;text-align:left">Used for</th></tr>
+<tr><td>DEV</td><td>40 / 45</td><td>before v1</td><td>tuning the v1 prompt</td></tr>
+<tr><td>TEST</td><td>25 / 10</td><td>before v1 froze</td><td>one run with v1</td></tr>
+<tr><td>TEST2</td><td>64 / 40</td><td>after v1 froze</td><td>held out, hash logged</td></tr>
+<tr><td>TEST3</td><td>50 / 32</td><td>before v3 existed</td><td>held out, hash logged</td></tr>
+<tr><td>Adaptive attacker</td><td>8 targets</td><td>after all froze</td><td>30 queries per target</td></tr>
+</table>
+<div style="height:36px"></div>
+<div class="row">
+<div class="card"><p class="small strong">A set that shaped a prompt is never called held out for it.</p></div>
+<div class="card"><p class="small strong">Every held-out run is logged with prompt and dataset hashes.</p></div>
+<div class="card"><p class="small strong">Small samples, so every rate carries a 95% interval.</p></div>
+</div>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>This slide is why the numbers can be trusted, or at least audited. A small model is very sensitive to prompt wording, so how a test set is used matters as much as its size. DEV was used to tune the first prompt, v1. TEST was run once. TEST2 and TEST3 were written after the relevant prompt was frozen and are fingerprinted with a dataset hash, so any later edit would show. When we later built improved prompts, we never counted a set as held out if it had influenced that prompt. Every held-out run is appended to a log with prompt hashes. With only tens of cases per set we report Wilson 95 percent intervals, not just point estimates. Full protocol is in docs/evaluation_protocol.md.</aside>
+</section>

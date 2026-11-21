@@ -1,0 +1,35 @@
+<section id="appx-all" class="light" data-transition="fade">
+<p class="eyebrow">APPENDIX A</p>
+<h2 class="title">All guards on the sets where they were held out</h2>
+<div class="row" style="gap:40px">
+<div style="width:812px">
+<p class="small strong" style="margin-bottom:10px">Attacks that got through</p>
+<table class="tbl sm">
+<tr><th style="width:40%;text-align:left">Guard</th><th style="text-align:left">TEST</th><th style="text-align:left">TEST2</th><th style="text-align:left">TEST3</th></tr>
+<tr><td>Regex</td><td>23/25</td><td>62/64</td><td>49/50</td></tr>
+<tr><td>v1 strict</td><td>2/25</td><td>8/64</td><td>6/50</td></tr>
+<tr><td>v1 + pre-pass</td><td>–</td><td>–</td><td>15/50</td></tr>
+<tr><td>v2, no pre-pass</td><td>–</td><td>10/64</td><td>–</td></tr>
+<tr><td>v2</td><td>–</td><td>16/64</td><td>–</td></tr>
+<tr><td>v3</td><td>–</td><td>–</td><td>21/50</td></tr>
+<tr><td>Regex + v2</td><td>–</td><td>15/64</td><td>–</td></tr>
+<tr><td>Regex + v3</td><td>–</td><td>–</td><td>21/50</td></tr>
+</table></div>
+<div style="width:812px">
+<p class="small strong" style="margin-bottom:10px">Benign payloads wrongly blocked</p>
+<table class="tbl sm">
+<tr><th style="width:40%;text-align:left">Guard</th><th style="text-align:left">TEST</th><th style="text-align:left">TEST2</th><th style="text-align:left">TEST3</th></tr>
+<tr><td>Regex</td><td>0/10</td><td>1/40</td><td>1/32</td></tr>
+<tr><td>v1 strict</td><td>2/10</td><td>5/40</td><td>3/32</td></tr>
+<tr><td>v1 + pre-pass</td><td>–</td><td>–</td><td>0/32</td></tr>
+<tr><td>v2, no pre-pass</td><td>–</td><td>2/40</td><td>–</td></tr>
+<tr><td>v2</td><td>–</td><td>0/40</td><td>–</td></tr>
+<tr><td>v3</td><td>–</td><td>–</td><td>0/32</td></tr>
+<tr><td>Regex + v2</td><td>–</td><td>1/40</td><td>–</td></tr>
+<tr><td>Regex + v3</td><td>–</td><td>–</td><td>1/32</td></tr>
+</table></div>
+</div>
+<p class="label mute" style="margin-top:20px">A dash means the set was used to tune that version, or the guard was not run on it. Source: docs/results.md.</p>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>Backup: the full table behind the headline. Only held-out cells are filled in. v2 was tuned on DEV and TEST, so only TEST2 is held out for it. v3 was tuned on DEV, TEST and TEST2, so only TEST3 is held out. The pre-pass variant of v1 was never tuned, and was first evaluated on TEST3. Because several candidates were compared on TEST3, differences among them are exploratory, not a confirmed ranking. The strict v1 was frozen before TEST2 and TEST3 existed, which is why it is the only row with all three sets. The generated version of this table, with confidence intervals, is docs/results.md.</aside>
+</section>

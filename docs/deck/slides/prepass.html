@@ -1,0 +1,19 @@
+<section id="prepass" class="light" data-transition="fade">
+<p class="eyebrow">THE APPROACH</p>
+<h2 class="title">The pre-pass gives evidence, not orders</h2>
+<div class="row" style="gap:48px">
+<div class="col" style="width:820px">
+<p class="label strong mute" style="margin-bottom:10px">WHAT THE AGENT SENT</p>
+<p class="code" style="margin-bottom:24px">Summary. c2VjcmV0PWh1bnRlcjI=</p>
+<p class="label strong mute" style="margin-bottom:10px">WHAT THE PRE-PASS ADDS</p>
+<p class="code" style="margin-bottom:24px">decoded_candidates:<br>  base64 → "secret=hunter2"</p>
+<p class="body strong">Then the LLM decides.</p>
+</div>
+<div class="col" style="width:796px;gap:24px">
+<div class="card" style="flex:none"><h3 class="t-teal">It decodes and reveals</h3><p class="small">Base64, hex, percent-encoding, HTML entities, character codes, binary, spaced-out letters. Shows invisible and look-alike characters.</p></div>
+<div class="card" style="flex:none"><h3 class="t-coral">It never decides</h3><p class="small">No secret patterns, no verdict. Ciphers such as ROT13 or Atbash, Morse and plain prose are left to the model.</p></div>
+</div>
+</div>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>A small model cannot reliably decode base64 or see a zero-width character, so we added a deterministic helper, normalize.py. It decodes the encodings that can be decoded mechanically and reports invisible or look-alike Unicode characters. It is evidence only: it contains no list of secret-looking patterns and it never returns allow or block. That is what separates it from the old regex. A decoded string is still treated as untrusted data. Later in the deck we show where this helped and where it did not.</aside>
+</section>

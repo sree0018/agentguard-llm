@@ -1,0 +1,24 @@
+<section id="prepass-result" class="light" data-transition="fade">
+<p class="eyebrow">RESULT 3 · THE EVIDENCE PRE-PASS</p>
+<h2 class="title">The pre-pass helped, but not everywhere</h2>
+<div class="row" style="gap:48px">
+<div style="width:900px">
+<table class="tbl" style="font-size:26px">
+<tr><th style="width:56%;text-align:left">TEST2, same prompt</th><th style="width:22%;text-align:left">Without</th><th style="width:22%;text-align:left">With</th></tr>
+<tr><td>Decodable encodings (12)</td><td>3</td><td>0</td></tr>
+<tr><td>Undecodable encodings (24)</td><td>3</td><td>10</td></tr>
+<tr><td>Prose smuggling (12)</td><td>1</td><td>2</td></tr>
+<tr><td>Label abuse (8)</td><td>3</td><td>4</td></tr>
+<tr><td>Guard-targeted (8)</td><td>0</td><td>0</td></tr>
+<tr><td class="strong">All attacks through (64)</td><td class="strong">10</td><td class="strong">16</td></tr>
+<tr><td class="strong">False alarms (40 benign)</td><td class="strong">2</td><td class="strong">0</td></tr>
+</table>
+</div>
+<div class="col" style="width:716px;gap:24px">
+<div class="card" style="flex:none"><h3 class="t-teal">What it fixed</h3><p class="small">Everything it can decode is now caught (3 → 0), and false alarms fell from 2 to 0.</p></div>
+<div class="card" style="flex:none"><h3 class="t-coral">What it did not</h3><p class="small">On encodings it cannot decode, the model got worse (3 → 10). It seems to read “nothing decoded” as reassurance.</p></div>
+</div>
+</div>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>An ablation on TEST2: the same relaxed prompt, with and without the evidence pre-pass. Where the pre-pass can decode the payload, it works: those encodings go from 3 misses to 0, and false alarms go from 2 to 0. But on encodings the pre-pass cannot decode, such as Braille, flag letters or Caesar shifts, the model let more through with the pre-pass than without it, 10 against 3. Our interpretation, which is a hypothesis and not something we proved, is that the model treats an empty evidence block as a sign that everything is fine. Net effect on this set: 16 attacks through with the pre-pass against 10 without. This is the kind of result that only shows up if you run the ablation and report it either way.</aside>
+</section>

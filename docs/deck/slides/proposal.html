@@ -1,0 +1,20 @@
+<section id="proposal" class="light" data-transition="fade">
+<p class="eyebrow">THE APPROACH</p>
+<h2 class="title">Proposal: a local LLM guard replaces the regex</h2>
+<div class="row center" style="gap:0">
+<div class="card" style="flex:none;width:480px"><p class="label strong t-teal">INPUT</p><p class="small strong" style="margin:6px 0 4px">Pinned task spec</p><p class="small strong" style="margin:0 0 4px">Proposed tool call</p><p class="small strong" style="margin:0">Evidence pre-pass (optional)</p></div>
+<div class="arrow-gap"><x-shape kind="arrow-right" style="width:48px;height:28px;background:#7C8CA3"></x-shape></div>
+<div class="card hl" style="flex:none;width:480px"><p class="label strong">GUARD</p><h3 style="margin-top:6px">Local LLM</h3><p class="small">llama3.1:8b via Ollama, temperature 0, on the laptop</p></div>
+<div class="arrow-gap"><x-shape kind="arrow-right" style="width:48px;height:28px;background:#7C8CA3"></x-shape></div>
+<div class="code" style="flex:none;width:480px;font-size:24px">{"analysis": "…",<br> "verdict":<br> "ALLOW" | "BLOCK"}</div>
+</div>
+<div style="height:36px"></div>
+<div class="row">
+<div class="card"><h3>Blind to the document</h3><p class="small">It sees the task and the call, never the retrieved content.</p></div>
+<div class="card"><h3>Fails closed</h3><p class="small">Timeout, bad output or any error means BLOCK.</p></div>
+<div class="card"><h3>Strict parser</h3><p class="small">Only an exact ALLOW or BLOCK counts.</p></div>
+<div class="card"><h3>Replayable</h3><p class="small">Fixed seed, cached responses, offline replay.</p></div>
+</div>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>The proposal: swap the regex for a local language model that judges whether the payload is consistent with the user's task. It runs on the laptop through Ollama, so nothing leaves the machine and no API key is needed. Four design rules. One, the guard never sees the retrieved document. Two, it fails closed: if the model times out or returns anything other than a well-formed verdict, the call is blocked. Three, the parser accepts only an exact ALLOW or BLOCK in a JSON object; it never scans free text, because an attacker could try to echo the word ALLOW. Four, temperature zero, a fixed seed and an on-disk response cache so every number can be replayed offline.</aside>
+</section>

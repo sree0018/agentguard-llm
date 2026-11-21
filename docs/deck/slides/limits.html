@@ -1,0 +1,16 @@
+<section id="limits" class="light" data-transition="fade">
+<p class="eyebrow">HONEST LIMITS</p>
+<h2 class="title">What this does not show</h2>
+<div class="row" style="margin-bottom:32px">
+<div class="card"><h3>One author</h3><p class="small">The same person wrote the guard and the tests. Teammates’ blind cases are supported but not yet included.</p></div>
+<div class="card"><h3>A simulated agent</h3><p class="small">As in the original report, the agent’s behavior is modeled, not a live LLM loop.</p></div>
+<div class="card"><h3>Small samples</h3><p class="small">139 attacks and 82 benign payloads. Read the intervals, not just the percentages.</p></div>
+</div>
+<div class="row">
+<div class="card"><h3>“Unseen” is limited</h3><p class="small">It means unseen by the prompt, not by the author who wrote the attacks.</p></div>
+<div class="card"><h3>A brittle model</h3><p class="small">One extra instruction made an 8B prompt worse. We reverted it and logged it.</p></div>
+<div class="card"><h3>A modest attacker</h3><p class="small">The adaptive attacker is a structured search over 8 targets, not an LLM attacker.</p></div>
+</div>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>Six things the results do not prove. One: the same person wrote the guard, the attacks and the benign set, so independent test cases from teammates would strengthen everything; a loader and a template are included. Two: the agent is still simulated, as in the original report. Three: the sets are small, so the confidence intervals are wide. Four: when we say a technique was unseen we mean unseen by the prompt, not by the author. Five: an 8-billion-parameter model is brittle; in one tuning round, adding an instruction made results worse, and we reverted it and recorded it. Six: the adaptive attacker is a structured search over eight targets, not a free-form LLM attacker. Saying this plainly is part of the contribution.</aside>
+</section>

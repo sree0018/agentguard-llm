@@ -1,0 +1,18 @@
+<section id="headline" class="dark" data-transition="fade">
+<p class="eyebrow">RESULT 1 · ATTACKS THAT GET THROUGH</p>
+<h2 class="title" style="width:1500px">Regex lets 96% through. The LLM guard lets 12% through.</h2>
+<div class="brow" style="gap:32px;margin-bottom:28px">
+<p class="blabel strong" style="width:300px;font-size:36px">Regex check</p>
+<div class="btrack" style="width:1000px;height:72px"><div class="bfill f-coral" style="width:960px;height:72px"></div></div>
+<p class="bval t-coral" style="font-size:56px;font-family:'Space Grotesk',Arial,sans-serif">96%</p>
+</div>
+<div class="brow" style="gap:32px;margin-bottom:36px">
+<p class="blabel strong" style="width:300px;font-size:36px">LLM guard (v1)</p>
+<div class="btrack" style="width:1000px;height:72px"><div class="bfill f-teal" style="width:120px;height:72px"></div></div>
+<p class="bval t-teal" style="font-size:56px;font-family:'Space Grotesk',Arial,sans-serif">12%</p>
+</div>
+<p class="body">Pooled over three held-out sets: 134 of 139 attacks get past the regex, 16 of 139 past the LLM guard. 95% intervals: 92–98% against 7–18%.</p>
+<p class="small mute" style="margin-top:16px">llama3.1:8b, strict prompt, frozen before any of these sets was written.</p>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>The headline number. We pooled the three held-out sets, 139 attacks in all. The original regex lets 134 of them through, 96 percent. The strict LLM guard, which we call v1 and which was frozen before any of these sets was written, lets 16 through, 12 percent. The 95 percent confidence intervals do not overlap: 92 to 98 for the regex, 7 to 18 for the LLM guard. This is one-shot performance: each attack is tried once, with no feedback from the guard. Hold on to that, because the adaptive attacker slide changes the picture. Next slide: the same result per set.</aside>
+</section>

@@ -108,3 +108,14 @@ and each LLM check costs ~4 s (p50) on an M-series laptop versus microseconds fo
 | `python3 -m unittest test_llm_guard` | `python3 -m unittest discover -s tests` |
 | `import agentguard; agentguard.authorize` | `from agentguard import authorize` (unchanged API) |
 | `import llm_guard` | `from agentguard import llm` |
+
+## Everything else in this repository
+
+| Path | What it is |
+|---|---|
+| `docs/report.html` | Pictorial report (standalone HTML; open in a browser). Rebuild with `python3 tools/report/gen.py` |
+| `docs/deck/` | Source of the 23-slide presentation (`deck.json`, `deck.css`, one HTML file per slide, speaker notes in each `<aside>`) |
+| `docs/original_report/Project_Report.pdf` | The original AgentGuard course report this project extends |
+| `docs/DEMO_GUIDE.md` | 10-minute demo run of show |
+| `tools/report/gen.py` | Generator for `docs/report.html` (charts and diagrams are drawn from numbers typed in the script, copied from `docs/results.md`) |
+| `archive/original_flat/` | The original flat-script version of the code, kept for reference only (not importable; superseded by `src/agentguard`) |

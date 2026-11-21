@@ -1,0 +1,9 @@
+<section id="takeaways" class="dark" data-transition="fade">
+<p class="eyebrow">TAKEAWAYS</p>
+<h2 class="title">Three things to remember</h2>
+<div class="row center" style="gap:40px;margin-bottom:36px"><p class="num t-teal" style="width:100px">1</p><p class="lead" style="width:1500px">A local LLM guard cuts one-shot leaks from 96% to 12% against the regex it replaces.</p></div>
+<div class="row center" style="gap:40px;margin-bottom:36px"><p class="num t-teal" style="width:100px">2</p><p class="lead" style="width:1500px">It is a trade-off, not a free win: strict means 12% false alarms, and relaxing it leaks 25–42%.</p></div>
+<div class="row center" style="gap:40px"><p class="num t-teal" style="width:100px">3</p><p class="lead" style="width:1500px">It does not stop a determined, probing attacker. Use it as one layer, not the wall.</p></div>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>If the audience remembers three things. One: replacing the regex with a local LLM guard cut one-shot attack success on held-out data from 96 percent to 12 percent. Two: that came at a price, and the price is a dial, not a fix. A strict guard blocks about 12 percent of benign payloads; every way we found to quiet it let 25 to 42 percent of attacks through. Three: it does not hold against an attacker who can probe it and adapt, so it belongs inside a defense-in-depth design with allowlists, secret-shaped value detection and alerting on repeated blocks.</aside>
+</section>

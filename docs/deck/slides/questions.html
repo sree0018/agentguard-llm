@@ -1,0 +1,9 @@
+<section id="questions" class="dark" data-transition="fade">
+<div class="spacer"></div>
+<p class="eyebrow">THANK YOU</p>
+<h1 class="cover-title" style="font-size:120px;margin-bottom:28px">Questions?</h1>
+<p class="lead mute">Backup slides: all guards on all sets, and the tuning history.</p>
+<div class="spacer"></div>
+<p class="small mute">AgentGuard-LLM · Aditya · Gopika · Meera · Sreeranj</p>
+<aside>Open for questions. Likely ones: Why keep the strict version as the default when v3 has zero false alarms? Because on held-out data the strict version stops three to four times more attacks, and a false alarm costs a confirmation while a leak cannot be undone. Why not just add more regex patterns? The encoding space is open-ended; the regex let 134 of 139 held-out attacks through. Is the 0 percent on the original benchmark meaningful? Only partly; it is small and partly authored to match the checks. Why is regex plus LLM not better? The regex adds false positives on benign text that mentions words like bearer or API_KEY and catches almost nothing the LLM does not. Backup slides follow.</aside>
+</section>

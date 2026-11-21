@@ -1,0 +1,14 @@
+<section id="tradeoff" class="light" data-transition="fade">
+<p class="eyebrow">RESULT 2 · THE TRADE-OFF</p>
+<h2 class="title">Fewer false alarms? Not for free</h2>
+<div class="brow" style="margin-bottom:10px"><p class="blabel label strong mute" style="width:380px">GUARD · HELD OUT ON</p><p class="label strong mute" style="width:780px;margin:0">ATTACKS THAT GET THROUGH</p><p class="label strong mute" style="margin:0">FALSE ALARMS</p></div>
+<div class="brow"><p class="blabel" style="width:380px">Regex <span class="mute">· all three</span></p><div class="btrack" style="width:620px"><div class="bfill f-coral" style="width:595px"></div></div><p class="bval" style="width:140px">96%</p><p class="bval">2%</p></div>
+<div class="brow"><p class="blabel" style="width:380px">v1 strict <span class="mute">· all three</span></p><div class="btrack" style="width:620px"><div class="bfill f-teal" style="width:74px"></div></div><p class="bval" style="width:140px">12%</p><p class="bval">12%</p></div>
+<div class="brow"><p class="blabel" style="width:380px">v1 + pre-pass <span class="mute">· TEST3</span></p><div class="btrack" style="width:620px"><div class="bfill f-amber" style="width:186px"></div></div><p class="bval" style="width:140px">30%</p><p class="bval">0%</p></div>
+<div class="brow"><p class="blabel" style="width:380px">v2 <span class="mute">· TEST2</span></p><div class="btrack" style="width:620px"><div class="bfill f-amber" style="width:155px"></div></div><p class="bval" style="width:140px">25%</p><p class="bval">0%</p></div>
+<div class="brow"><p class="blabel" style="width:380px">v3 <span class="mute">· TEST3</span></p><div class="btrack" style="width:620px"><div class="bfill f-amber" style="width:260px"></div></div><p class="bval" style="width:140px">42%</p><p class="bval">0%</p></div>
+<div style="height:16px"></div>
+<p class="body strong">Every variant that removed false alarms let 25–42% of attacks through on held-out data.</p>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>We tried to get the best of both worlds: a guard that is strict on attacks and quiet on benign text. We built three variants. v1 plus the evidence pre-pass, never tuned. v2, a relaxed prompt with the pre-pass. v3, tuned further on everything we had seen. All three reached roughly zero false alarms on their held-out sets, and all three let 25 to 42 percent of attacks through. So within what prompt changes can do on an 8-billion-parameter model, this is a security versus usability curve, not a free win. Note the held-out sets differ per row because a set that shaped a prompt cannot be held out for it. v2 and v3 are not statistically comparable to v1 on the same data, so read the direction, not the exact gap.</aside>
+</section>

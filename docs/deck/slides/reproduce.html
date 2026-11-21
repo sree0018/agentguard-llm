@@ -1,0 +1,14 @@
+<section id="reproduce" class="light" data-transition="fade">
+<p class="eyebrow">REPRODUCIBILITY</p>
+<h2 class="title">Reproduce everything</h2>
+<div class="row" style="gap:48px">
+<p class="code" style="width:900px;font-size:24px;line-height:1.6">python3 run_experiment.py<br><span class="c-dim"># original experiment, no LLM</span><br>python3 -m unittest test_llm_guard<br><span class="c-dim"># 32 offline tests</span><br>python3 run_redteam.py --split test3 \<br>  --llm-mode replay \<br>  --configs "regex,llm=llama3.1:8b#v1"<br>python3 run_adaptive.py --llm-mode replay<br>python3 make_results_table.py</p>
+<div class="col" style="width:716px;gap:20px">
+<div class="card" style="flex:none"><p class="small strong">Offline replay from a cache of 1,314 saved model responses.</p></div>
+<div class="card" style="flex:none"><p class="small strong">Temperature 0, fixed seed, prompt and dataset hashes logged.</p></div>
+<div class="card" style="flex:none"><p class="small strong">The default run needs no LLM, no network and no pip install.</p></div>
+</div>
+</div>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>Everything in this talk can be regenerated. The default experiment still runs on the Python standard library alone and reproduces the original report. For the LLM results you either run a local Ollama server with llama3.1:8b, or replay from the committed cache of 1,314 saved model responses, in which case no model is needed at all. Replay mode fails loudly on a cache miss so no number can silently come from somewhere else. We verified that the replayed decisions are identical to the live runs. The code is in the agentguard folder; docs/results.md is generated from the per-case CSV files by make_results_table.py, so the tables cannot drift from the data.</aside>
+</section>

@@ -1,0 +1,19 @@
+<section id="weakspot" class="light" data-transition="fade">
+<p class="eyebrow">THE PROBLEM</p>
+<h2 class="title">The weak spot: a regex reads the payload</h2>
+<div class="row" style="gap:48px">
+<div class="col" style="width:760px">
+<h3>Check 4 today: six patterns</h3>
+<p class="code" style="font-size:26px">\bAPI[_-]?KEY\b<br>\bsk-(live|test)-…<br>\bpassword\s*[:=]<br>\baws_?(secret|access)_?key<br>\bbearer\s+…<br>\bsession[_-]?token</p>
+<p class="small mute" style="margin-top:20px">Plus a blocklist of host names. It ignores the task, and only looks at body, query and url.</p>
+</div>
+<div class="col" style="width:856px">
+<p class="big t-coral">5 / 5</p>
+<p class="body" style="margin-bottom:20px">original ADV-2 obfuscation attacks pass check 4</p>
+<p class="code">s k l i v e - A B C D E F 1 2 3 …<br>QVdTX1NFQ1JFVF9LRVk9QUtJQUVYQU1QTEU=<br>115 107 045 108 105 118 101</p>
+<p class="label mute" style="margin-top:12px">spaced out · base64 · character codes</p>
+</div>
+</div>
+<p class="foot">AgentGuard · local-LLM payload guard</p><p class="pg"></p>
+<aside>This is the weakness the original report admitted. The regex only matches literal patterns, so anyone who spaces out the letters, base64-encodes the secret or writes it as character codes walks straight past it. In our adaptive test set, called ADV-2, all five original obfuscation attacks got through. The regex also ignores the task entirely: it never asks whether the content makes sense for what the user wanted. That is the gap a language model can fill, because it can judge consistency, not just match strings.</aside>
+</section>
