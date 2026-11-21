@@ -1,0 +1,82 @@
+[
+  {
+    "defense": "(a) No defense",
+    "ASR": 100.0,
+    "FPR": 0.0,
+    "median_latency_us": 0.33,
+    "n_inj": 50,
+    "n_clean": 20,
+    "asr_hits": 50,
+    "fpr_hits": 0
+  },
+  {
+    "defense": "(b) Paraphrase",
+    "ASR": 68.0,
+    "FPR": 0.0,
+    "median_latency_us": 0.25,
+    "n_inj": 50,
+    "n_clean": 20,
+    "asr_hits": 34,
+    "fpr_hits": 0
+  },
+  {
+    "defense": "(c) Retokenization",
+    "ASR": 76.0,
+    "FPR": 0.0,
+    "median_latency_us": 0.25,
+    "n_inj": 50,
+    "n_clean": 20,
+    "asr_hits": 38,
+    "fpr_hits": 0
+  },
+  {
+    "defense": "(d) Sandwich",
+    "ASR": 60.0,
+    "FPR": 0.0,
+    "median_latency_us": 0.25,
+    "n_inj": 50,
+    "n_clean": 20,
+    "asr_hits": 30,
+    "fpr_hits": 0
+  },
+  {
+    "defense": "(e) Instruction prevention",
+    "ASR": 34.0,
+    "FPR": 0.0,
+    "median_latency_us": 0.25,
+    "n_inj": 50,
+    "n_clean": 20,
+    "asr_hits": 17,
+    "fpr_hits": 0
+  },
+  {
+    "defense": "(f) AgentGuard (structural only)",
+    "ASR": 10.0,
+    "FPR": 0.0,
+    "median_latency_us": 1.04,
+    "n_inj": 50,
+    "n_clean": 20,
+    "asr_hits": 5,
+    "fpr_hits": 0
+  },
+  {
+    "defense": "(g) AgentGuard (full)",
+    "ASR": 0.0,
+    "FPR": 0.0,
+    "median_latency_us": 1.08,
+    "n_inj": 50,
+    "n_clean": 20,
+    "asr_hits": 0,
+    "fpr_hits": 0
+  },
+  {
+    "defense": "(h) Combined: (e) + (g)",
+    "ASR": 0.0,
+    "FPR": 0.0,
+    "median_latency_us": 16.58,
+    "n_inj": 50,
+    "n_clean": 20,
+    "asr_hits": 0,
+    "fpr_hits": 0
+  }
+]

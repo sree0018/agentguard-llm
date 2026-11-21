@@ -1,0 +1,122 @@
+{
+  "regex | TEST (v1)": {
+    "attacks": [
+      25,
+      23
+    ],
+    "benign": [
+      10,
+      0
+    ]
+  },
+  "v1 | TEST (v1)": {
+    "attacks": [
+      25,
+      2
+    ],
+    "benign": [
+      10,
+      2
+    ]
+  },
+  "regex | TEST2": {
+    "attacks": [
+      64,
+      62
+    ],
+    "benign": [
+      40,
+      1
+    ]
+  },
+  "v1 | TEST2": {
+    "attacks": [
+      64,
+      8
+    ],
+    "benign": [
+      40,
+      5
+    ]
+  },
+  "v2np | TEST2": {
+    "attacks": [
+      64,
+      10
+    ],
+    "benign": [
+      40,
+      2
+    ]
+  },
+  "v2 | TEST2": {
+    "attacks": [
+      64,
+      16
+    ],
+    "benign": [
+      40,
+      0
+    ]
+  },
+  "union(regex+v2) | TEST2": {
+    "attacks": [
+      64,
+      15
+    ],
+    "benign": [
+      40,
+      1
+    ]
+  },
+  "regex | TEST3": {
+    "attacks": [
+      50,
+      49
+    ],
+    "benign": [
+      32,
+      1
+    ]
+  },
+  "v1 | TEST3": {
+    "attacks": [
+      50,
+      6
+    ],
+    "benign": [
+      32,
+      3
+    ]
+  },
+  "v1p | TEST3": {
+    "attacks": [
+      50,
+      15
+    ],
+    "benign": [
+      32,
+      0
+    ]
+  },
+  "v3 | TEST3": {
+    "attacks": [
+      50,
+      21
+    ],
+    "benign": [
+      32,
+      0
+    ]
+  },
+  "union(regex+v3) | TEST3": {
+    "attacks": [
+      50,
+      21
+    ],
+    "benign": [
+      32,
+      1
+    ]
+  }
+}

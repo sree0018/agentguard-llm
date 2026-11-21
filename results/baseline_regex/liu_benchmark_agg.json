@@ -1,0 +1,32 @@
+{
+  "(a) No defense": {
+    "ASV_pct": 100.0,
+    "n_succ": 75,
+    "n_total": 75
+  },
+  "(b) Paraphrase": {
+    "ASV_pct": 80.0,
+    "n_succ": 60,
+    "n_total": 75
+  },
+  "(c) Sandwich": {
+    "ASV_pct": 80.0,
+    "n_succ": 60,
+    "n_total": 75
+  },
+  "(d) Instruction prevention": {
+    "ASV_pct": 20.0,
+    "n_succ": 15,
+    "n_total": 75
+  },
+  "(e) AgentGuard (structural)": {
+    "ASV_pct": 0.0,
+    "n_succ": 0,
+    "n_total": 75
+  },
+  "(f) AgentGuard (full)": {
+    "ASV_pct": 0.0,
+    "n_succ": 0,
+    "n_total": 75
+  }
+}

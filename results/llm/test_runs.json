@@ -1,0 +1,56 @@
+[
+  {
+    "time": "2026-11-16 20:49:09",
+    "prompt_hash": "d4c05c622fca",
+    "configs": [
+      "regex",
+      "llm:llama3.1:8b",
+      "union:llama3.1:8b"
+    ],
+    "split": "test"
+  },
+  {
+    "time": "2026-11-16 21:02:57",
+    "prompt_hash": "d4c05c622fca",
+    "configs": [
+      "llm:llama3.1:8b@verdict",
+      "llm:llama3.2:3b"
+    ],
+    "split": "all"
+  },
+  {
+    "time": "2026-11-17 23:30:59",
+    "split": "test2",
+    "configs": [
+      "regex",
+      "llm:llama3.1:8b#v1",
+      "llm:llama3.1:8b#v2np",
+      "llm:llama3.1:8b#v2",
+      "union:llama3.1:8b#v2"
+    ],
+    "prompt_hashes": {
+      "v1": "d4c05c622fca",
+      "v2": "2ef35cbe6a64",
+      "v2np": "06f92db8f8d4"
+    },
+    "test2_dataset_hash": "57d2b47d15f2"
+  },
+  {
+    "time": "2026-11-18 00:41:20",
+    "split": "test3",
+    "configs": [
+      "regex",
+      "llm:llama3.1:8b#v1",
+      "llm:llama3.1:8b#v1p",
+      "llm:llama3.1:8b#v3",
+      "union:llama3.1:8b#v3"
+    ],
+    "prompt_hashes": {
+      "v1": "d4c05c622fca",
+      "v1p": "8304d461093b",
+      "v3": "f3d88a242253"
+    },
+    "test2_dataset_hash": null,
+    "test3_dataset_hash": "aaad5ba13c89"
+  }
+]

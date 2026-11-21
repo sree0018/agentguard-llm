@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentguard"
+version = "1.0.0"
+authors = [{ name = "Aditya" }, { name = "Gopika" }, { name = "Meera" }, { name = "Sreeranj" }]
+description = "Output-side authorization of AI-agent tool calls, with a local-LLM payload guard."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Course project; see README" }
+dependencies = []          # standard library only
+
+[project.optional-dependencies]
+dev = ["ruff>=0.6", "mypy>=1.10"]
+
+[project.scripts]
+agentguard = "agentguard.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+agentguard = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# Frozen research artefacts: prompt texts are hashed byte-for-byte, the evidence
+# pre-pass source is part of the v1p/v2/v3 prompt hashes, and the datasets are
+# hashed too. They are deliberately not reformatted (see CONTRIBUTING.md).
+"src/agentguard/llm/preprocess.py" = ["ALL"]
+"src/agentguard/llm/prompts.py" = ["E", "W", "RUF001", "RUF002", "RUF003"]
+"src/agentguard/data/*.py" = ["E", "W", "B", "SIM", "RUF", "UP", "I"]
+"src/agentguard/simulation/*.py" = ["E", "W", "B", "SIM", "RUF", "UP", "I"]
+"src/agentguard/evaluation/*.py" = ["E", "W", "B", "SIM", "RUF", "UP", "I"]
+"tests/*.py" = ["B", "SIM", "RUF", "UP", "I"]
+
+[tool.ruff.format]
+exclude = ["src/agentguard/llm/preprocess.py", "src/agentguard/llm/prompts.py",
+           "src/agentguard/data/*.py"]
+
+[tool.mypy]
+python_version = "3.10"
+packages = ["agentguard"]
+mypy_path = "src"
+ignore_missing_imports = true
+check_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = ["agentguard.simulation.*", "agentguard.data.*", "agentguard.evaluation.*"]
+ignore_errors = true   # research scripts: lint-clean but not type-annotated
+
+[[tool.mypy.overrides]]
+module = ["agentguard.core.*", "agentguard.paths", "agentguard.llm.factory", "agentguard.llm.guard"]
+disallow_untyped_defs = true
+
+[tool.unittest]

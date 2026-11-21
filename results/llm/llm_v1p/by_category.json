@@ -1,0 +1,58 @@
+{
+  "(a) No defense": {
+    "naive": 100.0,
+    "escape": 100.0,
+    "context_ignoring": 100.0,
+    "fake_completion": 100.0,
+    "combined": 100.0
+  },
+  "(b) Paraphrase": {
+    "naive": 0.0,
+    "escape": 60.0,
+    "context_ignoring": 100.0,
+    "fake_completion": 80.0,
+    "combined": 100.0
+  },
+  "(c) Retokenization": {
+    "naive": 20.0,
+    "escape": 100.0,
+    "context_ignoring": 60.0,
+    "fake_completion": 100.0,
+    "combined": 100.0
+  },
+  "(d) Sandwich": {
+    "naive": 0.0,
+    "escape": 60.0,
+    "context_ignoring": 60.0,
+    "fake_completion": 80.0,
+    "combined": 100.0
+  },
+  "(e) Instruction prevention": {
+    "naive": 0.0,
+    "escape": 10.0,
+    "context_ignoring": 30.0,
+    "fake_completion": 30.0,
+    "combined": 100.0
+  },
+  "(f) AgentGuard (structural only)": {
+    "naive": 10.0,
+    "escape": 10.0,
+    "context_ignoring": 10.0,
+    "fake_completion": 10.0,
+    "combined": 10.0
+  },
+  "(g) AgentGuard (full)": {
+    "naive": 0.0,
+    "escape": 0.0,
+    "context_ignoring": 0.0,
+    "fake_completion": 0.0,
+    "combined": 0.0
+  },
+  "(h) Combined: (e) + (g)": {
+    "naive": 0.0,
+    "escape": 0.0,
+    "context_ignoring": 0.0,
+    "fake_completion": 0.0,
+    "combined": 0.0
+  }
+}
