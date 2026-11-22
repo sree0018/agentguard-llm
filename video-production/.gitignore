@@ -1,0 +1,17 @@
+*
+!.gitignore
+!prepare.py
+!build_video.py
+!narration.md
+!timing.md
+!voice-sample.txt
+!pronunciation.json
+!render_narration.py
+!captions.srt
+!agentguard-draft.mp4
+!agentguard-draft-captioned.mp4
+!narration-preview.wav
+!blindspot-offline.txt
+!guard-attack-offline.txt
+!slide-audio/
+!slide-audio/*.wav
