@@ -1,0 +1,21 @@
+{
+  "Agent Guard-LLM": "Agent Guard L L M",
+  "AgentGuard-LLM": "Agent Guard L L M",
+  "AgentGuard": "Agent Guard",
+  "llama 3.1 8B": "Llama three point one eight B",
+  "Ollama": "Oh-llama",
+  "regex": "reh-jex",
+  "base64": "base sixty-four",
+  "TEST2": "test two",
+  "TEST3": "test three",
+  "8B": "eight B",
+  "read-only": "reed only",
+  "sree0018/agentguard-llm": "sree zero zero one eight slash Agent Guard L L M",
+  "Aditya": "ah dith yah",
+  "Meera": "mee rah",
+  "Gopika": "go pee kah",
+  "Sreeranj": "sree ranj",
+  "phoneme_overrides": {
+    "sree ranj": "sɹˈiːɹˌændʒ"
+  }
+}

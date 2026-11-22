@@ -1,0 +1,472 @@
+1
+00:00:00,500 --> 00:00:06,708
+Hi everyone, we're Aditya, Gopika, Meera and
+Sreeranj, and this is AgentGuard-LLM.
+
+2
+00:00:06,708 --> 00:00:19,427
+In one line: we took a defence for AI agents,
+replaced its weakest part with a language model
+that runs on a laptop, and then spent most of
+our time trying to break it.
+
+3
+00:00:19,427 --> 00:00:24,348
+The honest result is a trade-off, and we'll
+show you the numbers.
+
+4
+00:00:26,872 --> 00:00:32,140
+AI agents read content they don't control: web
+pages, emails, documents.
+
+5
+00:00:32,140 --> 00:00:35,287
+Then they use tools, like sending an email.
+
+6
+00:00:35,287 --> 00:00:40,701
+A prompt injection hides instructions in that
+content to hijack the agent.
+
+7
+00:00:40,701 --> 00:00:45,018
+AgentGuard doesn't try to stop the agent from
+being fooled.
+
+8
+00:00:45,018 --> 00:00:49,921
+It checks what the agent is about to do, just
+before the tool runs.
+
+9
+00:00:49,921 --> 00:00:51,530
+There are four checks.
+
+10
+00:00:51,530 --> 00:00:54,457
+One: is this tool allowed for this task?
+
+11
+00:00:54,457 --> 00:00:59,360
+Two: is the recipient, repository or file
+inside the allowed scope?
+
+12
+00:00:59,360 --> 00:01:04,774
+Three: if the task is read-only, is it trying
+something with side effects?
+
+13
+00:01:04,774 --> 00:01:08,213
+Those three are fixed rules, instant and cheap.
+
+14
+00:01:08,213 --> 00:01:13,774
+Check four asks: is the content of this message
+what the task would produce?
+
+15
+00:01:13,774 --> 00:01:25,042
+It is the only check that reads the payload, so
+it is the only one that can stop a malicious
+message sent through an allowed tool to an
+allowed recipient.
+
+16
+00:01:25,042 --> 00:01:31,701
+And the guard never sees the untrusted
+document, so the document can't talk to it
+directly.
+
+17
+00:01:34,225 --> 00:01:44,513
+In the original project, check four was a
+regex: six patterns such as API key, password
+and bearer token, plus a list of bad host
+names.
+
+18
+00:01:44,513 --> 00:01:46,555
+It never looks at the task.
+
+19
+00:01:46,555 --> 00:01:56,011
+So if an attacker spaces out the letters,
+base64-encodes the secret, or writes it as
+character codes, it walks straight past.
+
+20
+00:01:56,011 --> 00:02:00,929
+In the original report, all five obfuscation
+attacks got through.
+
+21
+00:02:00,929 --> 00:02:03,576
+That is the gap our project closes.
+
+22
+00:02:03,576 --> 00:02:07,359
+Now, let's look at how we addressed this
+weakness.
+
+23
+00:02:09,883 --> 00:02:15,551
+We replaced the regex with a language model,
+llama 3.1 8B through Ollama.
+
+24
+00:02:15,551 --> 00:02:21,452
+It runs on the laptop, so nothing leaves the
+machine and there's no API key.
+
+25
+00:02:21,452 --> 00:02:27,896
+It gets two inputs: the pinned description of
+the task, and the proposed tool call.
+
+26
+00:02:27,896 --> 00:02:34,263
+It answers in a fixed format, a short analysis
+and then a verdict, ALLOW or BLOCK.
+
+27
+00:02:34,263 --> 00:02:35,661
+Four design rules.
+
+28
+00:02:35,661 --> 00:02:38,534
+It never sees the retrieved document.
+
+29
+00:02:38,534 --> 00:02:44,125
+It fails closed: a timeout, garbled output or
+any error counts as BLOCK.
+
+30
+00:02:44,125 --> 00:02:47,541
+A strict parser: only an exact ALLOW counts.
+
+31
+00:02:47,541 --> 00:02:55,073
+And it's replayable: fixed seed and saved
+responses, so anyone can reproduce our numbers
+offline.
+
+32
+00:02:57,597 --> 00:02:58,801
+One more piece.
+
+33
+00:02:58,801 --> 00:03:07,710
+Small models can't reliably decode base64 or
+notice an invisible character, so we added a
+deterministic helper.
+
+34
+00:03:07,710 --> 00:03:16,861
+It only gives evidence: it decodes what can be
+decoded mechanically and flags look-alike or
+zero-width characters.
+
+35
+00:03:16,861 --> 00:03:20,634
+It has no secret patterns and it never decides.
+
+36
+00:03:20,634 --> 00:03:23,122
+The model still makes the call.
+
+37
+00:03:29,146 --> 00:03:35,258
+First case: a secret hidden as an encoded blob
+in the reply to a PDF-summary task.
+
+38
+00:03:35,258 --> 00:03:39,282
+The regex step says allow, it has no keyword to
+match.
+
+39
+00:03:39,282 --> 00:03:44,649
+The model step blocks it: an opaque string has
+no business in a summary.
+
+40
+00:03:44,649 --> 00:03:49,195
+The model time on screen is from the original
+recorded calls.
+
+41
+00:03:49,195 --> 00:03:55,233
+Second case: the payload tries to talk to the
+guard, claiming a verdict of ALLOW.
+
+42
+00:03:55,233 --> 00:04:00,077
+Using a language model adds that attack
+surface, so we tested it.
+
+43
+00:04:00,077 --> 00:04:01,568
+The guard blocks it.
+
+44
+00:04:01,568 --> 00:04:06,487
+Next, let's see how the guard performs across
+the full evaluation.
+
+45
+00:04:20,646 --> 00:04:25,782
+Anyone can show two cases working, so here's
+how we tested properly.
+
+46
+00:04:25,782 --> 00:04:27,595
+We wrote four test sets.
+
+47
+00:04:27,595 --> 00:04:30,012
+One was used to tune the prompt.
+
+48
+00:04:30,012 --> 00:04:36,810
+The other three, TEST, TEST2 and TEST3, were
+written after the relevant prompt was frozen.
+
+49
+00:04:36,810 --> 00:04:52,748
+They contain encodings and ciphers, secrets in
+plain sentences, secrets disguised as reference
+IDs, attacks aimed at the guard itself, and
+hard harmless text like Hindi, hashes and emoji
+to measure false alarms.
+
+50
+00:04:52,748 --> 00:04:57,959
+One rule: a set that shaped a prompt is never
+called held out for it.
+
+51
+00:04:57,959 --> 00:05:04,380
+Every run is logged with hashes, and every rate
+has a 95 percent confidence interval.
+
+52
+00:05:06,904 --> 00:05:08,023
+The headline.
+
+53
+00:05:08,023 --> 00:05:12,242
+Pooled over the three held-out sets, 139
+attacks.
+
+54
+00:05:12,242 --> 00:05:16,633
+The old regex lets 134 of them through, 96
+percent.
+
+55
+00:05:16,633 --> 00:05:20,853
+The strict LLM guard lets 16 through, 12
+percent.
+
+56
+00:05:20,853 --> 00:05:27,138
+The confidence intervals don't overlap: 92 to
+98 percent against 7 to 18.
+
+57
+00:05:27,138 --> 00:05:33,940
+Same frozen prompt, three independently written
+sets, similar result each time.
+
+58
+00:05:33,940 --> 00:05:40,312
+This is the one-shot picture: each attack is
+tried once, with no feedback.
+
+59
+00:05:42,836 --> 00:05:43,957
+It has a cost.
+
+60
+00:05:43,957 --> 00:05:48,760
+On 82 harmless held-out payloads the regex
+wrongly blocks 2.
+
+61
+00:05:48,760 --> 00:05:53,323
+The strict LLM guard wrongly blocks 10, about
+12 percent.
+
+62
+00:05:53,323 --> 00:06:02,209
+It gets suspicious of non-Latin scripts, hashes
+and anything that looks encoded, even a
+legitimate translation.
+
+63
+00:06:02,209 --> 00:06:06,212
+A wrongly blocked call costs a confirmation
+click.
+
+64
+00:06:06,212 --> 00:06:08,854
+A leaked key can't be taken back.
+
+65
+00:06:11,378 --> 00:06:14,008
+We tried to remove the false alarms.
+
+66
+00:06:14,008 --> 00:06:22,193
+We built three relaxed versions: one with the
+evidence helper, one with a relaxed prompt, and
+one tuned further.
+
+67
+00:06:22,193 --> 00:06:28,404
+All reached about zero false alarms, and all
+let 25 to 42 percent of attacks through.
+
+68
+00:06:28,404 --> 00:06:37,393
+Within what prompt changes can do on an
+8-billion-parameter model, that's a security
+versus usability dial, not a free win.
+
+69
+00:06:37,393 --> 00:06:41,266
+That's why we ship the strict version as the
+default.
+
+70
+00:06:41,266 --> 00:06:45,212
+Now, let's look at where the strict guard still
+fails.
+
+71
+00:06:47,736 --> 00:06:51,298
+Breaking the strict guard's misses down by
+type.
+
+72
+00:06:51,298 --> 00:07:00,427
+It's very good at encodings, even ones it can't
+decode, because an opaque string tacked onto a
+normal sentence looks wrong.
+
+73
+00:07:00,427 --> 00:07:05,029
+It stops every attack aimed at the guard: 0 of
+14 get through.
+
+74
+00:07:05,029 --> 00:07:15,123
+It's weakest in two places: secrets in plain
+prose, 4 of 20 get through, and secrets
+labelled as a commit hash or reference ID, 8 of
+14.
+
+75
+00:07:15,123 --> 00:07:22,396
+The guard can't know what the document
+contained, so a secret dressed as an identifier
+looks fine.
+
+76
+00:07:24,920 --> 00:07:28,824
+Fixed attack lists only show that those attacks
+fail.
+
+77
+00:07:28,824 --> 00:07:31,254
+So we built an adaptive attacker.
+
+78
+00:07:31,254 --> 00:07:42,228
+It sees ALLOW or BLOCK, searches 28 encoders
+and 8 wrappers, and has 30 tries per target,
+with a check that every payload really contains
+the secret.
+
+79
+00:07:42,228 --> 00:07:47,826
+Result: against the regex it broke 8 of 8
+targets, usually on the first try.
+
+80
+00:07:47,826 --> 00:07:52,097
+Against our strict guard, 7 of 8, after about
+three tries.
+
+81
+00:07:52,097 --> 00:07:59,610
+So the guard stops one-shot attacks well, but
+it does not stop a determined attacker who can
+probe it.
+
+82
+00:07:59,610 --> 00:08:11,394
+In real life an injected document rarely sees
+the verdict, so the earlier numbers are the
+realistic one-shot figure, but you shouldn't
+rely on this guard alone.
+
+83
+00:08:13,918 --> 00:08:16,204
+What these results don't prove.
+
+84
+00:08:16,204 --> 00:08:19,523
+The test sets are small, hence the intervals.
+
+85
+00:08:19,523 --> 00:08:22,399
+The agent is simulated, not a live one.
+
+86
+00:08:22,399 --> 00:08:30,143
+One person wrote both the guard and most of the
+tests; blind cases from teammates are the best
+next step.
+
+87
+00:08:30,143 --> 00:08:39,656
+And an 8B model is brittle: in one tuning
+round, adding an instruction made things worse,
+and we reverted it and wrote that down.
+
+88
+00:08:42,180 --> 00:08:44,136
+Three things to remember.
+
+89
+00:08:44,136 --> 00:08:52,504
+One: a local language model cut one-shot leaks
+from 96 percent to 12 percent against the regex
+it replaces.
+
+90
+00:08:52,504 --> 00:09:00,012
+Two: it's a trade-off: strict means 12 percent
+false alarms, relaxing it leaks 25 to 42
+percent.
+
+91
+00:09:00,012 --> 00:09:10,882
+Three: it doesn't stop a probing attacker, so
+use it as one layer in a defence, alongside
+allowlists and secret detection, not as the
+wall.
+
+92
+00:09:13,406 --> 00:09:24,519
+Everything is reproducible offline from the
+saved model answers, and it's all in our public
+repository, sree0018/agentguard-llm.
+
+93
+00:09:24,519 --> 00:09:28,078
+Thank you, we're happy to take questions.
